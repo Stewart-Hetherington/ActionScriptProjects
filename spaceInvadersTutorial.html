@@ -1,0 +1,209 @@
+<html>
+  <head>
+  
+    <title> Space Invaders Tutorial </title>
+    <link rel="stylesheet" type="text/css" href="theme.css">
+    
+  </head>
+  <body>
+  
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+      <div class="column-center-outer">
+ <img src="https://cdnb.artstation.com/p/assets/images/images/000/353/395/large/tom-carruthers-invaders-colour-alltogether-smaller.jpg?1418682395" >
+ <h1>  Space Invaders Tutorial  </h1> 
+
+<p> Welcome to my first blog. I have created a demo of space invaders and have outlined the steps for you to make your own. If you are still new to coding I would highly recommend you first try to build the <a href="http://www.makeflashgames.com/tutorials/tut2.php">pong tutorial</a>. I claim no ownership of the original code used, only the newly designed sprites and updates coded myself. </p>
+
+<p> Make sure to click on the screen first, then use the space bar to launch rockets and use the left and right keys to move your rocket ship across the screen. You will score more points for blasting aliens farther away. If the aliens get to your ship, its Gameover.</p>
+        
+        <p> A .swf file should appear here. I am having trouble uploading it to Codepen.To play the .swf file that  should appear here please go to my <a href="http://stewart-hetherington-cs270project.blogspot.ie/2017/03/blog-post.html">blog page</a>. If you have any sugestions on how to upload .swf files to codepen, any help would be appreciated.</p>
+<!--
+<div dir="lt" style="text-align: left;" trbidi="on">
+<embed height="480" pluginspage="http://www.macromedia.com/go/getflashplayer" src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/SpaceInvaders.swf" type="application/x-shockwave-flash" height="auto" width="550"></embed>  </div>
+  -->
+<p> I began taking tutorials on <a href="http://www.makeflashgames.com/index.php"><b>makeflashgames.com</b></a> and originally intended on designing a simpler game like pong or snake. After developing both of these games I wanted to try something more difficult, and I began to code space invaders. The tutorial I followed had very basic graphics so I made a few of my own improvements. </p>
+
+                                          <h2> New Update Design </h2>
+
+<img src="https://www.walldevil.com/wallpapers/a55/space-invaders-invader-wallpaper-retro-aurora-games-video-wallpapers.jpg" width="550">
+<ul>
+<li> I designed my own sprites for my space invader and rocket ship objects from images I found on google. </li>
+<li> There was a 1 second delay in between rocket launches, so I reduced this to 0.7 seconds. </li>
+<li> I extended the height of the screen to make it feel more like the original arcade game. </li>
+<li> Also in honor of the original, I moved the starting position of the rocket ship lower down the screen. </li> 
+<li> I removed a large chunk of land from the bottom of the screen to give the illusion that the player is flying in space.</li>
+<li> I needed to update certain parts of the original code, to reference my newly designed sprites. </li>
+<li> I then had to remake the score counter and move it to the bottom left of the screen. I also changed the color to a neon blue to add to the <em>arcade style</em> graphics.</li>
+<li> Finally I hacked the GameOver() function to leave the game running in a constant loop, rather than reseting the page every time the game ends. </li>
+</ul>
+
+<p> The original code I started this project with can be downloaded directly from <a href="http://www.makeflashgames.com/tutorials/tut3_files/fileDownload.php">this page.</a></p>
+
+<p> If you'd like to skip all that code and go straight to the finished project, my updated code can be downloaded directly from <a href="https://docs.google.com/uc?export=download&id=0B1Fw9C8TI1-XWjFveFJjQmM4aE0">here.</a></p>
+
+<!-- https://drive.google.com/file/d/0B1Fw9C8TI1-XWjFveFJjQmM4aE0/view?usp=sharing -->
+
+                                            <h2>  The Sprites  </h2>
+
+<img src="https://cdn.shutterstock.com/shutterstock/videos/17399329/thumb/1.jpg" width="550">
+
+<p> To me the giant tomato headed aliens and the tank styled rocket launcher took away from the <em>'Space Invaders Vibe'</em>, so I decided to designed my own sprites. First we need to make sure to delete the old symbols from our library, then we will replace them later on with the new symbols (sprites) we're about to create. In your library, select both the 'Enemy' and the 'Player' and delete them. Make sure not to delete the 'bullet' or the 'GameStage' as we will need these for our finished project.</p>
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-22%20at%2010.22.34.png" width="550">
+
+                                            <h2> Building our New Sprites </h2>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-22%20at%2010.57.05.png" width="550">
+
+<p> I'm sure there are much simpler methods to build far better sprites, but I decided to build mine with what little ActionScript 3 I have learned so far. For my classic <a href="https://regmedia.co.uk/2013/03/04/invader.jpg?x=648&y=348&crop=1">space invader</a> sprite I used a google image for reference and built a simple 20 x 20 green square. From there I just placed all the squares together until they made up the finished image. Not the most artistic method, but I'm still happy with my finished sprites. </p> 
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2009.12.02.png" width="550">
+
+                                                  <h2> Creating Symbols </h2>
+
+<p> As soon as I was happy with the space invader, I shrunk it down to the right size (35 x 25) and I made it into a symbol so I could reference it later in the code. The space invader can be made into a symbol by simply highlighting the whole image, right clicking on it and select convert to symbol. Then set it to <b>movie clip</b> if it's not already selected, give it an <b>instance name</b> of 'Enemy' to refernce it later in the code and remember to set its <b>registration</b> to the center. Last but not least, make sure to update the <b>Linkage</b> as it was with the old symbols. For the 'Enemy' symbol set the Linkage to 'Game.Enemy' and for the 'Player' symbol set the Linkage to 'Game.Player' </p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-22%20at%2011.13.19.png" width="550">
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2009.50.23.png" width="550">
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2009.22.55.png" width="550">
+
+<p> The <a href="https://s3.amazonaws.com/gs.apps.icons/TfeabnOBEeOrIyIACqoOPg_/Space%20Invaders%20Icon.png">rocket ship</a> sprite was a little more time consuming than the little space invader but was built using the exact same method. Again, simply build the pixelated image up using smaller building blocks. Once the image is built shrink it down ( 85 x 93 ) and convert it to a symbol. Then simply name it 'Player' so we can reference it later in the code. Now that we have designed our little space invaders ready to invade the earth, and our rocket ship to blast them down we can move onto the code.   </p>
+
+                                         <h1>   The Code   </h1>
+
+<img src="https://www.howtogeek.com/wp-content/uploads/2011/07/spaceinvaderswallpapercollection03.jpg"width="550">
+
+<p> Now that we have our new symbols hard-coded in to the code, there are a few adjustments that need to be made. First the large land mass at the bottom of the screen can be removed - <em>We're in space now</em>. Simply highlight the brown block (careful not to highlight anything else) and hit Ctrl + x. Now we need to lengthen the screen. Click on the stage and over in the properties menu adjust the height to 700.
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2014.36.03.png"width="550">
+
+                                          <h2> Adjust Rocket Settings </h2>
+
+<img src="https://s-media-cache-ak0.pinimg.com/originals/4e/8c/9a/4e8c9ae634a5510578c9d2b138f30639.jpg"width="550">
+
+<p> Now in the game folder we downloaded earlier we need to open up the <em>C.as</em> file to adjust the starting position of our rocket ship and the missile launch rate which I found a bit too slow. Once the file is opened, go to line 29 and adjust the <b>PLAYER_START_Y</b> to 500; then go to line 44 and change the value of <b>BULLET_DELAY</b> from 1000 to 750. This will just change the rate of fire from 1 second to 0.7 seconds. </p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2010.00.17.png" width="550"> 
+
+<p> Your finished <em>C.as</em> file should now look just like the above image. This file will control the  spawn rate  of the enemies and the speed of the enemies, the rockets and the player. Feel free to adjust the settings yourself to make the game easier or more difficult. </p>
+
+                                                <h2> The Score Counter </h2>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/super_mario_score_counter.jpg" width="550">
+
+<p> The most difficult and frustrating part of this whole tutorial was trying to get the score counter working after updating the graphics. After all, an arcade game without a score variable is blasphemy. I spent a long time examining every line of code and eventually decided to delete the score counter and create my own. The original download has all the layers on the Timeline locked so you'll have to unlock them, by clicking on the lock beside them. Once unlocked then highlight the Score counter and delete it.</p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2010.17.57.png"width="550">
+
+<p> Now to make a new score counter, select the <b>Text Tool</b> and create a new text box down next to the Score. Now under properties, set its instance name to <em>txtScorePlayer</em> to hardcode it into our code. Next make sure its set to <b>Dynamic text</b> and its <b>font family</b> is set to _sans to avoid any errors. Finally set its <b>color</b> to neon blue and its <b>size</b> to 30pt. Your final properties fields should look just like the image below. The rocket ship blasting laser beams at the space invader next to it is a prototype demo I'll be releasing later so don't worry about that for now. </p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2010.29.26.png"width="550">
+
+                                             <h2> The Start Game Function </h2>
+
+<img src="https://www.walldevil.com/wallpapers/h14/space-invaders-start-press-wallpaper.jpg" width="550">
+
+<p> Now that we have updated the code and graphics to feel a little more like the original arcade game, lets take a look at how the code actually works. The <em>startGame()</em> function written in <em>Gamecontroller.as</em> will set up the player starting position and add the player and the score to the stage. Two arrays have been initialised to hold bullets and enemies during runtime. Other variables and a fireBullet boolean have been initialised to interact with the other action script files later on. </p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2010.44.13.png"width="550" height="auto">
+
+                                                     <h2> Set Controls </h2>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/set_controls.jpg" width="550">
+
+<p> A simple <em>keyboardEvent</em> was used to see if the player is firing a rocket or moving left and right. The code is very easy to follow. The fireBullet boolean is set to true once the space bar is pressed and this will launch the rocket. We will see how this works later. If the left key is pressed, the moveX variable is set to -1 moving the player left along the X axis and vice versa for the right key.</p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2011.00.11.png" width="550"> 
+
+                                           <h2> Keeping the Rocket on-screen </h2>
+
+<img src="https://s-media-cache-ak0.pinimg.com/736x/6d/8a/7a/6d8a7a0169c5c6f9912956dfa13d1031.jpg" width="550">
+
+<p> Now to ensure our rocket ship doesn't leave the screen and head out of bounds an <em>update()</em> function was built. This code operates using a simple <b>'if-else'</b> statement, to check whether the player is moving along the X axis and if so, to only allow the rocket ship within the boundaries of the screen. </p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2011.06.05.png" width="550">
+
+                                                   <h2> Launching Rockets </h2>
+
+<img src="https://hexus.net/media/uploaded/2013/12/f8246533-3897-4a6a-b975-fca3eef8c033.jpg" width="550">
+
+<p> Next the firing logic is written to physically launch our rockets from the rocket ship using the space bar. The <b>currTime</b> variable will keep track of the current time and the <b>lastBulletTime</b> will keep track of the time that has elapsed since the last rocket was launched. The <b>C.BULLET_DELAY</b> we set earlier will now control how often we get to fire a rocket. An if statement is used to check if the it has been at least 0.7 seconds since the last rocket launch. Now the next rocket will only be launched if this parameter is met. The <em>bullets.push()</em> method is used to add a new bullet to our array, then the <em>mcGameStage.addChild()</em> method is used to give the illusion that our rocket ship is launching the rocket. Again feel free to mess around with the bullet delay variable to adjust the level of difficulty. </p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2011.13.44.png" width="550">
+
+<p> In this project we have created our own class for the rocket. You will find this file in the game folder named <em>Bullet.as</em>. A default constructor is already coded for us in the <em>Bullet()</em> function. Line 9 and Line 10 simply set the rocket where its meant to be on the screen with the parameters passed into the function.
+</p>
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-22%20at%2011.37.47.png" width="550">
+
+                                               <h2> Randomly Spawn Space Invaders </h2>
+
+<img src="https://hdwallsource.com/img/2016/4/thumb/space-invaders-wallpaper-background-52021-53727-hd-wallpapers-thumb.jpg" width="550">
+
+<p> Next we will look at how the enemies are spawned randomly. A random number is repeatedly generated thanks to the <em>Math.random()</em> method and then compared to the <b>SPAWN_ENEMY_CHANCE</b> variable in the <em>C.as</em> file. If the random number is less than 0.03 a new space invader will be generated and pushed to the enemy array then added to the stage using the <em>mcGameStage.addChild()</em> method just like the rockets. Again the game difficulty can be adjusted by simply changing the spawn rate of the space invaders so feel free to experiment with the spawn variables value. </p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2011.27.47.png" width="550">
+
+                                   <h2> The Enemy </h2>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-22%20at%2012.05.43.png" width="550"> 
+
+<p> To better understand how the space invaders will be spawned, open the <em>Enemy.as</em> file. Lines 10-20 shown below, are immediately executed when a new Enemy is created in the <em>GameController.as</em> file. The position of the enemy is then set in Lines 12 and 13. The <b>facing</b> variable will keep track of which direction the space invader is travelling and the <b>score</b> variable will store the value the space invader will be worth once blasted by a rocket.</p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-22%20at%2012.00.50.png" width="550">
+
+<p> So now in the <em>GameController.as</em> the loop on Line 164 will continually update the enemies. The <em>update()</em> function will control exactly how the space invader acts. We will look at this function next.
+</p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-22%20at%2012.16.20.png" width="550">
+
+                                   <h2> Design the travel Path of the Space Invaders </h2>
+
+<img src="https://static.giantbomb.com/uploads/original/4/49670/1093283-139895_spaceinvinfgene.jpg" width="550">
+
+<p> Within the <em>Enemy.as</em> file we also have an <b>update()</b> function (Not to be confused with the update() function in GameController.as) that will handle the movement of the alien. All space invaders will start from the top left corner and move down one level and change direction once they hit the edge of the screen. An if statement is used here to check whether the space invader is within the bounds. If the enemy hits the left or right bound the enemy first changes direction of travel by multiplying <b>this.facing</b> variable by -1, then the it advances closer to the player using the <b>C.ENEMY_ADVANCE()</b> method. Finally the space invaders score is reduced every time it advances closer to the player. </p> 
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2011.42.35.png" width="550">
+
+                                     <h2> The Rocket </h2>
+
+<img src="https://ichef.bbci.co.uk/wwfeatures/wm/live/1280_640/images/live/p0/25/zm/p025zmzy.jpg" width="550">
+
+ <p> Back in the GameController.as file Line 172 calls the <em>update()</em> function inside a loop of Bullets. The update function it is calling can be found in the <em>Bullet.as</em> file. Its very straightforward to follow as the rockets only travel in one direction-Up.
+</p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-22%20at%2012.34.43.png" width="550">
+
+                                           <h2> Checking for Collisions </h2>
+
+<img src="https://i1.wp.com/www.gamengadgets.com/wp-content/uploads/2014/12/star-wars-wallpaper-47.jpg" width="550">
+
+<p> Now for probably the most advanced piece of code in the tutorial. Don't worry, it's not incredibly advanced if you already understand Arrays and for loops. Here is an easy to follow demonstration on <a href="https://mathbits.com/MathBits/Java/Looping/NestedFor.htm">nested for loops</a> in java. The collision code was written to record every time a rocket hits the enemy, and what instructions to follow once a collision occurs. A double for loop has been implemented to check for the collision of bullets and also the collision of enemies. So we use the <b>.hitTestObject()</b> method to check for collisions between the movie clips. An if statement within the double for loop is used to check if <b>bullets[i]</b> hits <b>enemies[j]</b>. Only then can we update the playerScore, remove the bullet and remove the enemy from the stage. obviously each rocket can only hit one enemy before it explodes, so <b>break</b> is called on Line 199 to break out of the loop. The .hitTestObject() method works just fine for this game, however a more advanced method would have to be written for more advanced gaming. </p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-21%20at%2011.53.44.png" width="550">
+
+                                <h2> Game Over </h2>
+
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-22%20at%2011.07.46.png"width="550">
+
+<p> The <em>gameOver()</em> function on Line 217 will end the game and bring it to a halt. It will essentially remove the possibility of using the keys and stop updating the graphics to the screen. Ideally it would be much more aesthetically pleasing to have a game over screen and the option to replay or record a high score, but I am currently dealing with time constraints and a fast approaching deadline so I will save this for an updated version, to be released some time in the near future. The original code just froze the game as soon as the space invaders reached the ship, so I hacked the code to force a reset. I coded Lines 221-230 to remove all of the space invaders and bullets from the screen. The code just implements 2 for loops to remove all existing enemies and bullets from their arrays. I then commented out Line 231 as this was a failed method I tried writing earlier. Finally I added the reset code to Line 237. This code simply states that once the screen has been wiped clean, initialise the <em>startGame()</em> function used earlier to launch the game. This hack will essentially leave the game in an infinite loop.</p>
+
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-22%20at%2017.06.05.png" width="550">
+
+<h3> Thanks for reading through my tutorial, feel free to comment and ask any questions you have about the code and I will try get back to you as soon as possible. </h3>
+
+        <!--
+<img src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-22%20at%2011.04.14.png" width="570"> 
+-->
+        <img style="-webkit-user-select:none; display:block; margin:auto;" src="https://172dfcb0-a-62cb3a1a-s-sites.googlegroups.com/site/stewartsactionscript3tutorials/Screen%20Shot%202017-03-22%20at%2017.06.05.png?attachauth=ANoY7cp1awdrlEu1zwi9qqo4J2gOQ9h_R3sfSb20IeVyYIckwOiEIMGNTe7glb4CDMY2ijHaJ71ss400cbHpfxBdlY2c3-4w2W__EugISH7L4F-AV3BndeXync9pCz1vYkYFbRjcwgm7T8TVU6_0o2sfA0jxwxve22OQsS16U6COjwmRIDytMyg3fPw6mdKRsI7WJmX_RqD9BcwJFNRarS8Cs5-PX_e34bDj4UlRP0r8pcWpBeXMnM9AkoDSUgnb4MLyJseOpd0P9Os93OkjZWQCz44aGiIfKg%3D%3D&amp;attredirects=0">
+<h3> My goal is to eventually update the code to have it as close to the original game as possible. My next update will contain an opening and gameOver screen and possibly a high-score screen. New sprites are already in development, however new levels and Boss battles will have to be designed before they are made available. This project has now become much bigger than I thought it would be originally but I look forward to working on more advanced code to bring the game to life.</h3> 
+  </div>
+  </div>
+  </div>
+</div>
+
+</body>
+</html>
