@@ -1,22 +1,28 @@
 <style>
-
-
+  
    ul{
      text-align:justify;
       margin-left: 25%;
-    margin-right: 25%; 
+    	margin-right: 25%; 
    }
+li{
+	margin-left:25%;
+	margin-right:25%;
+}
    p{
      text-align:justify;
     margin-left: 25%;
     margin-right: 25%; 
    }
    img {
+margin-top:2%;
  display: block;
   margin-left: auto;
   margin-right: auto; 
    }
-   h1{ color:green; text-align:center }
+   h1{ 
+     color:green; text-align:center
+}
 h2 { 
   color:green; text-align:center
    }
@@ -25,8 +31,13 @@ h2 {
     margin-left: 25%;
     margin-right: 25%; 
    }
-img {   width:515px;  text-align:center;  }
-em {  color:green;   }
+img {  
+  width:50%;  
+  text-align:center;  
+}
+em {  
+  color:green;  
+}
  body { 
    display:block;
      margin-top: auto;
@@ -34,5 +45,12 @@ em {  color:green;   }
   margin-right: auto;
      background-color:  black;
    }
+.fitPage{
+  background-color: white;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  margin-left:15%;
+  margin-right:15%;
+}
 
 </style>
